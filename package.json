@@ -1,0 +1,10 @@
+{
+  "name": "keryx-node",
+  "version": "1.0.0",
+  "description": "A nodejs implementation of the keryx server",
+  "main": "index.js",
+  "repository": "git@github.com-saidmithilesh:saidmithilesh/keryx-node.git",
+  "author": "Mithilesh Said",
+  "license": "N",
+  "private": false
+}
