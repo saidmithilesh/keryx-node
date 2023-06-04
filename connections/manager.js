@@ -1,13 +1,13 @@
 const { ConnectionStatus, ConnectionHistory } = require('./models');
 
-exports.SetStatus = async function(clientId, status) {
+exports.SetStatus = async function (clientId, status) {
     try {
         await ConnectionStatus.updateOne(
-            {clientId}, 
-            {$set: {isConnected: status}},
-            {upsert: true}
+            { clientId },
+            { $set: { isConnected: status } },
+            { upsert: true }
         );
-        let connHistoryRecord = new ConnectionHistory({clientId, status});
+        let connHistoryRecord = new ConnectionHistory({ clientId, status });
         await connHistoryRecord.save();
     } catch (exception) {
         console.log(exception);
@@ -17,12 +17,12 @@ exports.SetStatus = async function(clientId, status) {
     return true;
 }
 
-exports.GetStatus = async function(clientId) {
+exports.GetStatus = async function (clientId) {
     try {
-        let connectionStatus = await ConnectionStatus.findOne({clientId});
+        let connectionStatus = await ConnectionStatus.findOne({ clientId });
         return connectionStatus.toStatusObj();
-    } catch(exception) {
+    } catch (exception) {
         console.log(exception);
-        return new ConnectionStatus({clientId}).toStatusObj();
+        return new ConnectionStatus({ clientId }).toStatusObj();
     }
 }

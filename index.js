@@ -5,7 +5,7 @@ const connections = require('./connections/manager');
 const app = express();
 app.use(express.json());
 
-(async() => {
+(async () => {
     await database.connect();
     app.listen(process.env.APP_PORT, (err) => {
         if (err) process.exit(0);
